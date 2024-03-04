@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1215.67 1192.21">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke: url(#Degradado_sin_nombre_262-7);
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8, .cls-9, .cls-10, .cls-11, .cls-12, .cls-13, .cls-14 {
+        fill: none;
+        stroke-miterlimit: 10;
+        stroke-width: 2px;
+      }
+
+      .cls-15 {
+        isolation: isolate;
+      }
+
+      .cls-2 {
+        stroke: url(#Degradado_sin_nombre_262-12);
+      }
+
+      .cls-3 {
+        stroke: url(#Degradado_sin_nombre_262-5);
+      }
+
+      .cls-4 {
+        stroke: url(#Degradado_sin_nombre_262);
+      }
+
+      .cls-5 {
+        stroke: url(#Degradado_sin_nombre_262-6);
+      }
+
+      .cls-6 {
+        stroke: url(#Degradado_sin_nombre_262-10);
+      }
+
+      .cls-7 {
+        stroke: url(#Degradado_sin_nombre_262-9);
+      }
+
+      .cls-8 {
+        stroke: url(#Degradado_sin_nombre_262-8);
+      }
+
+      .cls-9 {
+        stroke: url(#Degradado_sin_nombre_262-11);
+      }
+
+      .cls-10 {
+        stroke: url(#Degradado_sin_nombre_262-2);
+      }
+
+      .cls-11 {
+        stroke: url(#Degradado_sin_nombre_262-14);
+      }
+
+      .cls-12 {
+        stroke: url(#Degradado_sin_nombre_262-3);
+      }
+
+      .cls-16 {
+        mix-blend-mode: screen;
+        opacity: .5;
+      }
+
+      .cls-13 {
+        stroke: url(#Degradado_sin_nombre_262-13);
+      }
+
+      .cls-14 {
+        stroke: url(#Degradado_sin_nombre_262-4);
+      }
+    </style>
+    <radialGradient id="Degradado_sin_nombre_262" data-name="Degradado sin nombre 262" cx="127.66" cy="595.86" fx="127.66" fy="595.86" r="421.34" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0e1315"/>
+      <stop offset=".48" stop-color="#657f6c" stop-opacity=".7"/>
+      <stop offset=".86" stop-color="rgba(27, 36, 34, .53)" stop-opacity=".53"/>
+      <stop offset=".92" stop-color="#0e1315" stop-opacity=".5"/>
+    </radialGradient>
+    <radialGradient id="Degradado_sin_nombre_262-2" data-name="Degradado sin nombre 262" cx="284.59" cy="595.94" fx="284.59" fy="595.94" r="421.34" xlink:href="#Degradado_sin_nombre_262"/>
+    <radialGradient id="Degradado_sin_nombre_262-3" data-name="Degradado sin nombre 262" cx="441.52" cy="596.02" fx="441.52" fy="596.02" r="421.34" xlink:href="#Degradado_sin_nombre_262"/>
+    <radialGradient id="Degradado_sin_nombre_262-4" data-name="Degradado sin nombre 262" cx="598.46" cy="596.11" fx="598.46" fy="596.11" r="421.34" xlink:href="#Degradado_sin_nombre_262"/>
+    <radialGradient id="Degradado_sin_nombre_262-5" data-name="Degradado sin nombre 262" cx="755.39" cy="596.19" fx="755.39" fy="596.19" r="421.34" xlink:href="#Degradado_sin_nombre_262"/>
+    <radialGradient id="Degradado_sin_nombre_262-6" data-name="Degradado sin nombre 262" cx="912.32" cy="596.27" fx="912.32" fy="596.27" r="421.34" xlink:href="#Degradado_sin_nombre_262"/>
+    <radialGradient id="Degradado_sin_nombre_262-7" data-name="Degradado sin nombre 262" cx="1069.25" cy="596.36" fx="1069.25" fy="596.36" r="421.34" xlink:href="#Degradado_sin_nombre_262"/>
+    <radialGradient id="Degradado_sin_nombre_262-8" data-name="Degradado sin nombre 262" cx="453.6" cy="122.63" fx="453.6" fy="122.63" r="429.62" gradientTransform="translate(730.72 -322.02) rotate(90)" xlink:href="#Degradado_sin_nombre_262"/>
+    <radialGradient id="Degradado_sin_nombre_262-9" data-name="Degradado sin nombre 262" cx="610.53" cy="122.72" fx="610.53" fy="122.72" r="429.62" gradientTransform="translate(730.72 -322.02) rotate(90)" xlink:href="#Degradado_sin_nombre_262"/>
+    <radialGradient id="Degradado_sin_nombre_262-10" data-name="Degradado sin nombre 262" cx="767.46" cy="122.8" fx="767.46" fy="122.8" r="429.62" gradientTransform="translate(730.72 -322.02) rotate(90)" xlink:href="#Degradado_sin_nombre_262"/>
+    <radialGradient id="Degradado_sin_nombre_262-11" data-name="Degradado sin nombre 262" cx="924.39" cy="122.89" fx="924.39" fy="122.89" r="429.62" gradientTransform="translate(730.72 -322.02) rotate(90)" xlink:href="#Degradado_sin_nombre_262"/>
+    <radialGradient id="Degradado_sin_nombre_262-12" data-name="Degradado sin nombre 262" cx="1081.32" cy="122.97" fx="1081.32" fy="122.97" r="429.62" gradientTransform="translate(730.72 -322.02) rotate(90)" xlink:href="#Degradado_sin_nombre_262"/>
+    <radialGradient id="Degradado_sin_nombre_262-13" data-name="Degradado sin nombre 262" cx="1238.25" cy="123.06" fx="1238.25" fy="123.06" r="429.62" gradientTransform="translate(730.72 -322.02) rotate(90)" xlink:href="#Degradado_sin_nombre_262"/>
+    <radialGradient id="Degradado_sin_nombre_262-14" data-name="Degradado sin nombre 262" cx="1395.18" cy="123.14" fx="1395.18" fy="123.14" r="429.62" gradientTransform="translate(730.72 -322.02) rotate(90)" xlink:href="#Degradado_sin_nombre_262"/>
+  </defs>
+  <g class="cls-15">
+    <g id="Capa_2" data-name="Capa 2">
+      <g id="Capa_1-2" data-name="Capa 1">
+        <g class="cls-16">
+          <line class="cls-4" x1="128.64" y1="0" x2="126.69" y2="1191.71"/>
+          <line class="cls-10" x1="285.57" y1=".08" x2="283.62" y2="1191.79"/>
+          <line class="cls-12" x1="442.5" y1=".17" x2="440.55" y2="1191.88"/>
+          <line class="cls-14" x1="599.43" y1=".25" x2="597.48" y2="1191.96"/>
+          <line class="cls-3" x1="756.36" y1=".33" x2="754.41" y2="1192.04"/>
+          <line class="cls-5" x1="913.29" y1=".42" x2="911.34" y2="1192.13"/>
+          <line class="cls-1" x1="1070.22" y1=".5" x2="1068.27" y2="1192.21"/>
+        </g>
+        <g class="cls-16">
+          <line class="cls-8" x1="1215.66" y1="132.55" x2=".51" y2="130.6"/>
+          <line class="cls-7" x1="1215.58" y1="289.49" x2=".43" y2="287.53"/>
+          <line class="cls-6" x1="1215.49" y1="446.42" x2=".34" y2="444.46"/>
+          <line class="cls-9" x1="1215.41" y1="603.35" x2=".26" y2="601.39"/>
+          <line class="cls-2" x1="1215.32" y1="760.28" x2=".17" y2="758.32"/>
+          <line class="cls-13" x1="1215.24" y1="917.21" x2=".09" y2="915.25"/>
+          <line class="cls-11" x1="1215.15" y1="1074.14" x2="0" y2="1072.18"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
