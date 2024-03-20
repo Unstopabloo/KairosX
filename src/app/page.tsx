@@ -8,7 +8,8 @@ import Moon from "@/public/moon.png"
 import Moon2 from "@/public/moon2.png"
 import Moon3 from "@/public/moon3.png"
 import Moon4 from "@/public/moon4.png"
-import GodRays from "@/public/godrays.png"
+import GodRays from "@/public/poli.png"
+import Peloti from "@/public/re.webp"
 
 export default function Login() {
   return (

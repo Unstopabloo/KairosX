@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
-import { Inter, Raleway } from "next/font/google";
-import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
-const raleway = Raleway({ subsets: ["latin"] });
-
 import { ThemeProvider } from "@/components/theme-provider"
+import { raleway } from "@/lib/fonts";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Kairos X app",
