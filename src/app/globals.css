@@ -13,10 +13,10 @@
     --popover: 0 0% 100%;
     --popover-foreground: 20 14.3% 4.1%;
 
-    --primary: 146 100% 72%;
+    --primary: 146 87% 62%;
     --primary-foreground: 60 9.1% 97.8%;
 
-    --secondary: 60 4.8% 95.9%;
+    --secondary: 0, 170, 153, 0.8;
     --secondary-foreground: 24 9.8% 10%;
 
     --muted: 60 4.8% 95.9%;
@@ -45,10 +45,10 @@
     --popover: 20 14.3% 4.1%;
     --popover-foreground: 60 9.1% 97.8%;
 
-    --primary: 146 100% 72%;
+    --primary: 146 87% 62%;
     --primary-foreground: 24 9.8% 10%;
 
-    --secondary: 12 6.5% 15.1%;
+    --secondary: 0, 170, 153, 0.8;
     --secondary-foreground: 60 9.1% 97.8%;
 
     --muted: 12 6.5% 15.1%;
@@ -85,6 +85,13 @@ body {
     inset 3px -3px 4px 0 #00000048,
     inset 5px -5px 6px 0 #00000048,
     inset -5px 5px 8px 0 #ffffff48;
+}
+
+.nav-list {
+  box-shadow: 6px 6px 12px 0 #00000048,
+    inset 2px -2px 4px 0 #00000048,
+    inset 3px -3px 5px 0 #00000048,
+    inset -2px 2px 4px 0 #a1a1a12d;
 }
 
 .floating-vertical {
