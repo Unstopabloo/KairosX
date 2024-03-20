@@ -1,3 +1,5 @@
+import { RegisterLink, LoginLink } from "@kinde-oss/kinde-auth-nextjs/components";
+
 import Image from "next/image";
 import { Button } from "@/ui/button";
 import Link from "next/link";
@@ -58,7 +60,7 @@ export default function Login() {
         <p className="text-white/80 px-10 max-w-[680px] text-center">KairosX es la herramienta de gestión financiera más intuitiva, segura y eficaz para el programador moderno. Te permite tomar el control de tu dinero, aprovechar al máximo cada momento y alcanzar tus metas financieras con mayor rapidez.</p>
       </div>
       <Button asChild className="button-blob font-semibold text-lg rounded-lg px-12">
-        <Link href="/dashboard">Ingresar</Link>
+        <LoginLink>Ingresar</LoginLink>
       </Button>
     </main>
   );
