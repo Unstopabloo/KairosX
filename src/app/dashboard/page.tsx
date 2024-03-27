@@ -2,19 +2,18 @@ import DataCard from "@/components/DataCard";
 import Link from "next/link";
 import TableList from "@/components/TableList";
 import ListItem from '@/components/ListItem';
+import Charts from "@/components/Charts.tsx/Charts";
 
 export default function Dashboard() {
   return (
     <section className="flex gap-10 h-full">
       <div className="flex flex-col gap-10">
         <section className="flex items-center gap-10">
-          <DataCard />
-          <DataCard />
-          <DataCard />
+          <DataCard type="Ingresos" amount={950000} />
+          <DataCard type="Gastos" amount={300000} />
+          <DataCard type="UF" amount={150000} />
         </section>
-        <section className="bg-[#151515] h-full">
-          article  article  article  article  article  article
-        </section>
+        <Charts />
       </div>
       <aside className="h-full flex flex-col justify-between gap-6">
         <TableList type="Ingresos Mensuales" >

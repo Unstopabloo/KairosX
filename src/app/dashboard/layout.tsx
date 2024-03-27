@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { HomeIcon } from "@/ui/icons";
-import { User, Settings } from 'lucide-react';
+import { Plus, User, AlignStartVertical, Hexagon } from 'lucide-react';
 
 import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 
@@ -11,12 +11,20 @@ export default async function DashboardLayout({ children }: { children: React.Re
         {children}
       </div>
       <nav className="p-6 font-semibold flex items-center justify-center gap-10">
-        <ul className="nav-list bg-[rgba(13, 15, 14)] flex items-center gap-5 px-2 py-1 rounded-lg [&>li]:list-none [&>li]:p-2">
-          <Link className="w-full hover:bg-[#7bf3a97a] p-2 rounded-lg" href={"/dashboard"}><HomeIcon /></Link>
-          <LogoutLink className="w-full hover:bg-[#7bf3a97a] p-2 rounded-lg"><User size={25} /></LogoutLink>
-          <Link className="w-full hover:bg-[#7bf3a97a] p-2 rounded-lg" href={"/dashboard"}><Settings size={25} /></Link>
+        <ul className="bg-black-card border border-white/30 flex items-center gap-5 px-2 py-1 rounded-lg [&>li]:list-none [&>li]:p-2">
+          <Link className="w-full hover:bg-primary hover:text-black p-2 rounded-lg" href={"/dashboard"}>
+            <Hexagon size={25} />
+          </Link>
+          <LogoutLink className="w-full hover:bg-primary hover:text-black p-2 rounded-lg">
+            <User size={25} />
+          </LogoutLink>
+          <Link className="w-full hover:bg-primary hover:text-black p-2 rounded-lg" href={"/dashboard"}>
+            <AlignStartVertical size={25} />
+          </Link>
         </ul>
-        <Link href="/">Añadir</Link>
+        <Link className="bg-black-card border hover:bg-primary hover:shadow-md transition-shadow hover:shadow-primary hover:text-black rounded-lg p-3 border-white/30" href="/">
+          <Plus size={25} />
+        </Link>
       </nav>
     </main>
   )

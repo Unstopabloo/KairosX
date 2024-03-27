@@ -2,17 +2,32 @@ import { ChevronRight } from "lucide-react"
 import Link from "next/link"
 import { inter } from "@/lib/fonts"
 
-export default async function DataCard() {
+interface DataCardProps {
+  type: string
+  amount: number
+}
+
+export default async function DataCard({ type, amount }: DataCardProps) {
+
+  let border
+  if (type === 'Ingresos') {
+    border = 'border-b-primary'
+  } else if (type === 'Gastos') {
+    border = 'border-b-[#FDCE95]'
+  } else {
+    border = 'border-b-[#1AEDC8]'
+  }
+
   return (
-    <div className="button-blob flex flex-col justify-start items-start gap-2 px-5 py-4 text-gray-900 font-semibold bg-primary rounded-lg">
-      <header className="flex justify-between items-center gap-10">
-        <h3 className="text-gray-800 text-md">Ingresos Totales</h3>
+    <div className={`bg-[#151616] border-b-4 min-w-56 ${border} flex flex-col justify-start items-start gap-2 px-5 py-4 text-white font-semibold rounded-lg`}>
+      <header className="flex justify-between items-center w-full gap-10">
+        <h3 className="text-white/80 text-sm">{type}</h3>
         <Link href="/">
           <ChevronRight />
         </Link>
       </header>
-      <section>
-        <h2 className={`text-black font-semibold text-lg ${inter.className}`}>$950000 <small className="text-xs font-normal">/mo</small></h2>
+      <section className="w-full pe-3">
+        <h2 className={`text-white w-full flex justify-between items-end font-semibold text-lg ${inter.className}`}>${amount} <small className="text-[10px] text-white/80 font-normal">/mo</small></h2>
       </section>
     </div>
   )

@@ -76,6 +76,21 @@
   }
 }
 
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: #151616;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: #0c7447;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #10c778;
+}
+
 body {
   background-image: url('../../public/background.avif');
 }
@@ -87,15 +102,24 @@ body {
     inset -5px 5px 8px 0 #ffffff48;
 }
 
-.nav-list {
-  box-shadow: 6px 6px 12px 0 #00000048,
-    inset 2px -2px 4px 0 #00000048,
-    inset 3px -3px 5px 0 #00000048,
-    inset -2px 2px 4px 0 #a1a1a12d;
-}
-
 .floating-vertical {
   animation: infinite 10s floating-vertical;
+}
+
+.tremor-Legend-legendItem {
+  gap: 0.5rem !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+}
+
+.recharts-text {
+  color: white !important;
+  fill: rgba(255, 255, 255, 0.596) !important;
+  font-size: 0.7rem !important;
+}
+
+.tremor-Legend-legendItem:hover {
+  background-color: #222222 !important;
 }
 
 @keyframes floating-vertical {
