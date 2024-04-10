@@ -1,15 +1,13 @@
 import { sql } from "@vercel/postgres";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { NextResponse } from "next/server";
+import { cookies } from "next/headers";
 
 export const dynamic = 'force-dynamic'
 
 export async function GET() {
   console.log('Creating user')
   const { getUser } = getKindeServerSession();
-
-  console.log('Getting user')
-
   const user = await getUser();
 
   if (!user || user == null || !user.id)
@@ -20,8 +18,6 @@ export async function GET() {
   const email = user.email;
   const avatar = user.picture;
 
-  console.log('kinde_id', kinde_id)
-
   if (typeof user.id !== 'string') {
     throw new Error('Invalid id');
   }
@@ -30,11 +26,13 @@ export async function GET() {
 
   if (findUser.rowCount > 0) {
     console.log('User already exists, returning user');
+
+    cookies().set('user_id', findUser.rows[0].id)
     return NextResponse.redirect(process.env.REDIRECT_ON_SUCCESS || 'http://localhost:3000/dashboard');
   }
 
   const result = await sql`INSERT INTO users (kinde_id, username, email, avatar) VALUES (${kinde_id}, ${username}, ${email}, ${avatar}) RETURNING *`;
 
-  console.log('User created successfully', result);
+  cookies().set('user_id', result.rows[0].id)
   return NextResponse.redirect(process.env.REDIRECT_ON_SUCCESS || 'http://localhost:3000/dashboard');
 }
