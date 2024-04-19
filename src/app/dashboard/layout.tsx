@@ -1,14 +1,9 @@
 import Link from "next/link";
 import { Plus, User, AlignStartVertical, Hexagon } from 'lucide-react';
-// import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-// import { createUser } from "@/server/Users/createUser";
 
 import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
-  // const { getUser } = getKindeServerSession();
-
-  // console.log(await getUser())
   return (
     <main className="flex flex-col items-center justify-center p-6 text-white h-screen overflow-hidden">
       <div className="flex-1">

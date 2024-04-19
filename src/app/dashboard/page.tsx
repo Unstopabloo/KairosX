@@ -6,6 +6,7 @@ import Charts from "@/components/Charts.tsx/Charts";
 import { cookies } from "next/headers";
 
 import { getGastos } from "@/server/Gastos/getGastos";
+import { getIngresos } from "@/server/Ingresos/getIngresos";
 
 import NoData from "@/app/dashboard/_components/NoData";
 
@@ -17,15 +18,16 @@ export default async function Dashboard() {
   }
 
   const gastos = await getGastos();
+  const ingresos = await getIngresos();
 
-  if (!gastos) {
+  if (!gastos && !ingresos) {
     return <NoData />
   }
 
   return (
     <section className="flex gap-10 h-full">
       {
-        gastos && (
+        gastos && ingresos && (
           <>
             <div className="flex flex-col gap-10">
               <section className="flex items-center gap-10">
