@@ -5,7 +5,9 @@ import ListItem from '@/components/ListItem';
 import Charts from "@/components/Charts.tsx/Charts";
 import { cookies } from "next/headers";
 
-import { getAllPlanificaciones } from "@/server/Planificaciones/getPlanificaciones";
+import { getGastos } from "@/server/Gastos/getGastos";
+
+import NoData from "@/app/dashboard/_components/NoData";
 
 export default async function Dashboard() {
   const user_id = cookies().get('user_id')?.value
@@ -14,11 +16,16 @@ export default async function Dashboard() {
     return <h1>Ups! no hay usuario activo por favor vuelve a iniciar sesión</h1>
   }
 
-  const planificaciones = await getAllPlanificaciones({ user_id });
+  const gastos = await getGastos();
+
+  if (!gastos) {
+    return <NoData />
+  }
+
   return (
     <section className="flex gap-10 h-full">
       {
-        planificaciones ? (
+        gastos && (
           <>
             <div className="flex flex-col gap-10">
               <section className="flex items-center gap-10">
@@ -43,8 +50,6 @@ export default async function Dashboard() {
               </TableList>
             </aside>
           </>
-        ) : (
-          <h1>No hay planificaciones</h1>
         )
       }
     </section>
