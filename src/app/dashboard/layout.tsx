@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { HomeIcon } from "@/ui/icons";
 import { Plus, User, AlignStartVertical, Hexagon } from 'lucide-react';
 
 import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
@@ -22,7 +21,8 @@ export default async function DashboardLayout({ children }: { children: React.Re
             <AlignStartVertical size={25} />
           </Link>
         </ul>
-        <Link className="bg-black-card border hover:bg-primary hover:shadow-md transition-shadow hover:shadow-primary hover:text-black rounded-lg p-3 border-white/30" href="/">
+        <Link 
+          className="bg-black-card border hover:bg-primary hover:shadow-md transition-shadow hover:shadow-primary hover:text-black rounded-lg p-3 border-white/30" href="/dashboard/create">
           <Plus size={25} />
         </Link>
       </nav>
