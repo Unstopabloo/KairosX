@@ -1,6 +1,6 @@
 "use client"
 
-import { postIngreso } from "@/server/Ingresos/postIngreso"
+import { postGasto } from "@/server/Gastos/postGasto"
 
 import { useState } from "react"
 import * as z from "zod"
@@ -14,7 +14,6 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -89,7 +88,7 @@ export default function AddIncomes() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log('submitting form')
-    const result = await postIngreso(values)
+    const result = await postGasto(values)
 
     if (!result) {
       console.log('Algo ha ido mal')
@@ -107,9 +106,9 @@ export default function AddIncomes() {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Añade un nuevo ingreso</DialogTitle>
+          <DialogTitle>Añade un nuevo gasto</DialogTitle>
           <DialogDescription>
-            Añadir una nueva entrada de ingreso a tu proyecto de ahorro
+            Añadir una nueva entrada de gasto a tu proyecto de ahorro
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
@@ -125,7 +124,7 @@ export default function AddIncomes() {
                       <Input placeholder="Trabajo" {...field} />
                     </FormControl>
                     <FormDescription className="text-xs">
-                      El nombre que tendrá este ingreso
+                      El nombre que tendrá este gasto
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
@@ -145,7 +144,7 @@ export default function AddIncomes() {
                       />
                     </FormControl>
                     <FormDescription className="text-xs">
-                      El dinero que ingresara
+                      El dinero que saldra
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
@@ -161,7 +160,7 @@ export default function AddIncomes() {
                       <Input placeholder="Sueldo" {...field} />
                     </FormControl>
                     <FormDescription className="text-xs">
-                      El origen de este ingreso
+                      El origen de este gasto
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
