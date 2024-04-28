@@ -2,7 +2,7 @@
 
 import { postIngreso } from "@/server/Ingresos/postIngreso"
 
-import { useState } from "react"
+import { use, useState } from "react"
 import * as z from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -18,6 +18,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  DialogClose
 } from "@/components/ui/dialog"
 import {
   Select,
@@ -73,6 +74,7 @@ const formSchema = z.object({
 
 export default function AddIncomes() {
   const [isActive, setIsActive] = useState<boolean>(true)
+  const [isOpen, setIsOpen] = useState<boolean>(false)
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -86,22 +88,20 @@ export default function AddIncomes() {
       ending: undefined,
     }
   })
+  const { reset } = useForm()
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log('submitting form')
-    const result = await postIngreso(values)
+    await postIngreso(values)
 
-    if (!result) {
-      console.log('Algo ha ido mal')
-      return
-    }
-
+    reset()
+    setIsOpen(false)
   }
 
   return (
-    <Dialog>
+    <Dialog open={isOpen}>
       <DialogTrigger asChild>
-        <Button size="icon">
+        <Button onClick={() => setIsOpen(!isOpen)} size="icon">
           <Plus />
         </Button>
       </DialogTrigger>
@@ -260,7 +260,12 @@ export default function AddIncomes() {
                   />
                 )
               }
-              <Button type="submit">Crear</Button>
+              <DialogFooter className="flex w-full items-end">
+                <DialogClose asChild>
+                  <Button onClick={() => setIsOpen(!isOpen)} variant="ghost">Cancelar</Button>
+                </DialogClose>
+                <Button onClick={() => setIsOpen(!isOpen)} type="submit">Crear</Button>
+              </DialogFooter>
             </form>
           </Form>
         </div>

@@ -4,6 +4,7 @@ import { sql } from "@vercel/postgres";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { getUserId } from "@/server/Users/getUserId";
 import { redirect } from "next/navigation";
+import { revalidateTag } from "next/cache";
 
 interface Ingreso {
   name: string;
@@ -33,11 +34,10 @@ export async function postIngreso(values: Ingreso) {
     const settled = values.settled instanceof Date ? values.settled.toISOString() : values.settled;
     const ending = values.ending instanceof Date ? values.ending.toISOString() : values.ending;
 
-    const result = await sql`INSERT INTO ingresos (name, value, comes_from, icon, user_id, settled, isActive, ending) 
+    await sql`INSERT INTO ingresos (name, value, comes_from, icon, user_id, settled, isActive, ending) 
       VALUES (${values.name}, ${values.value}, ${values.comes_from}, ${values.icon}, ${user_id}, ${settled}, ${values.isActive}, ${ending})`;
 
-    return result;
-
+    revalidateTag('ingresos')
   } catch (e) {
     console.log(e);
     return null;
