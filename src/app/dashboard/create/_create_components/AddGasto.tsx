@@ -17,6 +17,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  DialogClose,
+  DialogFooter
 } from "@/components/ui/dialog"
 import {
   Select,
@@ -259,7 +261,12 @@ export default function AddIncomes() {
                   />
                 )
               }
-              <Button type="submit">Crear</Button>
+              <DialogFooter className="flex w-full items-end">
+                <DialogClose asChild>
+                  <Button variant="ghost">Cancelar</Button>
+                </DialogClose>
+                <Button type="submit">Crear</Button>
+              </DialogFooter>
             </form>
           </Form>
         </div>
