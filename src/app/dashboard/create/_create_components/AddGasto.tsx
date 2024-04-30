@@ -46,7 +46,7 @@ import { Calendar } from "@/components/ui/calendar"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 
-import { Plus, CalendarIcon } from 'lucide-react'
+import { Plus, CalendarIcon, Lamp, Apple, Gamepad2, Shirt, Sprout } from 'lucide-react'
 
 const formSchema = z.object({
   name: z.string({ message: "El nombre debe ser un texto" }).min(3, {
@@ -66,7 +66,7 @@ const formSchema = z.object({
   }).max(50, {
     message: "La fuente no puede tener más de 50 caracteres",
   }),
-  icon: z.string(),
+  category_id: z.coerce.number().int().positive(),
   isActive: z.boolean().default(true),
   settled: z.date(),
   ending: z.date().optional(),
@@ -74,6 +74,7 @@ const formSchema = z.object({
 
 export default function AddIncomes() {
   const [isActive, setIsActive] = useState<boolean>(true)
+  const [isOpen, setIsOpen] = useState<boolean>(false)
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -81,7 +82,7 @@ export default function AddIncomes() {
       name: "",
       value: 0,
       comes_from: "",
-      icon: "1",
+      category_id: 1,
       isActive: isActive,
       settled: new Date(),
       ending: undefined,
@@ -97,10 +98,11 @@ export default function AddIncomes() {
       return
     }
 
+    setIsOpen(false)
   }
 
   return (
-    <Dialog>
+    <Dialog onOpenChange={setIsOpen} open={isOpen}>
       <DialogTrigger asChild>
         <Button size="icon">
           <Plus />
@@ -170,20 +172,42 @@ export default function AddIncomes() {
               />
               <FormField
                 control={form.control}
-                name="icon"
+                name="category_id"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Icono</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <FormLabel>Categoria</FormLabel>
+                    <Select onValueChange={field.onChange}>
                       <FormControl>
                         <SelectTrigger>
-                          <SelectValue placeholder="Selecciona tu icono" />
+                          <SelectValue placeholder="Selecciona la categoria" />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="1">m@example.com</SelectItem>
-                        <SelectItem value="2">m@google.com</SelectItem>
-                        <SelectItem value="3">m@support.com</SelectItem>
+                        <SelectItem value="1">
+                          <div className="flex items-center gap-3">
+                            <Lamp size={15} /> Hogar
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="2">
+                          <div className="flex items-center gap-3">
+                            <Apple size={15} /> Comida
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="3">
+                          <div className="flex items-center gap-3">
+                            <Gamepad2 size={15} /> Entretenimiento
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="4">
+                          <div className="flex items-center gap-3">
+                            <Shirt size={15} /> Vestuario
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="5">
+                          <div className="flex items-center gap-3">
+                            <Sprout size={15} /> Inversion
+                          </div>
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                     <FormDescription>
@@ -263,9 +287,9 @@ export default function AddIncomes() {
               }
               <DialogFooter className="flex w-full items-end">
                 <DialogClose asChild>
-                  <Button variant="ghost">Cancelar</Button>
+                  <Button onClick={() => setIsOpen(!isOpen)} variant="ghost">Cancelar</Button>
                 </DialogClose>
-                <Button type="submit">Crear</Button>
+                <Button onClick={() => setIsOpen(!isOpen)} type="submit">Crear</Button>
               </DialogFooter>
             </form>
           </Form>

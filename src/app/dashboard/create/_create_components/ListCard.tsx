@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { inter } from "@/lib/fonts";
-import { Pen, Wallet } from "lucide-react";
+import { Pen, Lamp, Apple, Gamepad2, Shirt, Sprout, FolderKanban, Handshake, Receipt, Bird } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge"
 
@@ -11,12 +11,13 @@ interface ListCardProps {
   name: string;
   value: number;
   comes_from: string;
-  icon: string;
+  icon: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
   isActive: boolean;
   type: "ingreso" | "gasto";
 }
 
 export default async function ListCard({ id, name, value, comes_from, icon, isActive, type }: ListCardProps) {
+
   return (
     <div className='relative flex justify-between items-center gap-2 bg-[#131313] p-3 border rounded-lg shadow-md max-w-[95%]'>
       {
@@ -24,7 +25,15 @@ export default async function ListCard({ id, name, value, comes_from, icon, isAc
       }
       <header className='flex items-center gap-4'>
         <div>
-          <Wallet />
+          {icon === 1 && <Lamp />}
+          {icon === 2 && <Apple />}
+          {icon === 3 && <Gamepad2 />}
+          {icon === 4 && <Shirt />}
+          {icon === 5 && <Sprout />}
+          {icon === 6 && <FolderKanban />}
+          {icon === 7 && <Handshake />}
+          {icon === 8 && <Receipt />}
+          {icon === 9 && <Bird />}
         </div>
         <div className='flex flex-col gap-1 text-white/80'>
           <h3 className='text-xs font-semibold'>{name}</h3>

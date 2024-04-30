@@ -4,7 +4,7 @@ import { inter } from "@/lib/fonts"
 
 interface DataCardProps {
   type: string
-  amount: number
+  amount: number | undefined
 }
 
 export default async function DataCard({ type, amount }: DataCardProps) {
@@ -27,7 +27,7 @@ export default async function DataCard({ type, amount }: DataCardProps) {
         </Link>
       </header>
       <section className="w-full pe-3">
-        <h2 className={`text-white w-full flex justify-between items-end font-semibold text-lg ${inter.className}`}>${amount} <small className="text-[10px] text-white/80 font-normal">/mo</small></h2>
+        <h2 className={`text-white w-full flex justify-between items-end font-semibold text-lg ${inter.className}`}>${amount ? amount : 0} <small className="text-[10px] text-white/80 font-normal">/mo</small></h2>
       </section>
     </div>
   )

@@ -35,3 +35,31 @@ export async function getIngresos() {
         return null;
     }
 }
+
+export async function getTotalIngresos() {
+    revalidateTag('ingresos')
+
+    console.log('Total Ingresos function called')
+
+    try {
+        const { getUser } = getKindeServerSession();
+
+        const user = await getUser();
+        if (!user) {
+            throw new Error('No hay usuario');
+        }
+
+        const user_id = await getUserId();
+
+        if (!user_id) {
+            redirect("/")
+        }
+
+        const { rows } = await sql`SELECT SUM(value) FROM ingresos WHERE user_id = ${user_id}`;
+
+        return rows[0].sum
+    } catch (e) {
+        console.log(e);
+        return null;
+    }
+}

@@ -122,6 +122,20 @@ body {
   background-color: #222222 !important;
 }
 
+line {
+  stroke: #444444 !important;
+}
+
+.recharts-tooltip-wrapper {
+  background-color: #222222 !important;
+  border: 1px solid #444444 !important;
+  border-radius: 6px !important;
+}
+
+.fill-tremor-content-emphasis {
+  fill: #fff !important;
+}
+
 @keyframes floating-vertical {
   0% {
     transform: translateY(-0.5rem);

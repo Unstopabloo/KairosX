@@ -3,7 +3,7 @@ import QuantityNumber from './QuantityNumber'
 
 interface ListItemProps {
   text: string;
-  incomeType: 'Activo' | 'Pasivo';
+  incomeType: boolean;
   quantity: number;
 }
 
@@ -16,7 +16,7 @@ export default async function ListItem({ text, incomeType, quantity }: ListItemP
         </header>
         <div className="flex flex-col justify-center items-start gap-1">
           <H3Card text={text} />
-          <small className='font-semibold text-[10px] text-white/80'>{incomeType}</small>
+          <small className='font-semibold text-[10px] text-white/80'>{incomeType === true ? 'Activo' : 'Pasivo'}</small>
         </div>
       </div>
       <div className='flex-1 flex justify-end'>
