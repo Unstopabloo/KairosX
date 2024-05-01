@@ -93,6 +93,8 @@ const datahero = [
   },
 ];
 
+// trabajar desde aca
+
 const valueFormatter = (number: number) =>
   `$${Intl.NumberFormat('us').format(number).toString()}`;
 

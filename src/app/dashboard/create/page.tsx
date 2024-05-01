@@ -17,12 +17,12 @@ export default async function Create() {
     const formatedTotalIngresos = new Intl.NumberFormat('es-ES', {
         style: 'currency',
         currency: 'CLP'
-    }).format(totalIngresos)
+    }).format(Number(totalIngresos))
 
     const formatedTotalGastos = new Intl.NumberFormat('es-ES', {
         style: 'currency',
         currency: 'CLP'
-    }).format(totalGastos)
+    }).format(Number(totalGastos))
 
     return (
         <div>

@@ -36,7 +36,7 @@ export async function getIngresos() {
     }
 }
 
-export async function getTotalIngresos() {
+export async function getTotalIngresos(): Promise<number | null> {
     revalidateTag('ingresos')
 
     console.log('Total Ingresos function called')

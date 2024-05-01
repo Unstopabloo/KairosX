@@ -36,7 +36,7 @@ export async function getGastos() {
     }
 }
 
-export const getTotalGastos = async () => {
+export async function getTotalGastos(): Promise<number | null> {
     revalidateTag('gastos')
 
     console.log('Total Gastos function called')
