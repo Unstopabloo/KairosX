@@ -46,7 +46,7 @@ import { Calendar } from "@/components/ui/calendar"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 
-import { Plus, CalendarIcon } from 'lucide-react'
+import { Plus, CalendarIcon, Sprout, FolderKanban, Handshake, Receipt, Bird } from 'lucide-react'
 
 const formSchema = z.object({
   name: z.string({ message: "El nombre debe ser un texto" }).min(3, {
@@ -66,7 +66,7 @@ const formSchema = z.object({
   }).max(50, {
     message: "La fuente no puede tener más de 50 caracteres",
   }),
-  icon: z.string(),
+  category_id: z.coerce.number().int().positive(),
   isActive: z.boolean().default(true),
   settled: z.date(),
   ending: z.date().optional(),
@@ -82,7 +82,7 @@ export default function AddIncomes() {
       name: "",
       value: 0,
       comes_from: "",
-      icon: "1",
+      category_id: 1,
       isActive: isActive,
       settled: new Date(),
       ending: undefined,
@@ -99,7 +99,7 @@ export default function AddIncomes() {
   }
 
   return (
-    <Dialog open={isOpen}>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button onClick={() => setIsOpen(!isOpen)} size="icon">
           <Plus />
@@ -169,20 +169,42 @@ export default function AddIncomes() {
               />
               <FormField
                 control={form.control}
-                name="icon"
+                name="category_id"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Icono</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <FormLabel>Categoria</FormLabel>
+                    <Select onValueChange={field.onChange}>
                       <FormControl>
                         <SelectTrigger>
-                          <SelectValue placeholder="Selecciona tu icono" />
+                          <SelectValue placeholder="Selecciona la categoria" />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="1">m@example.com</SelectItem>
-                        <SelectItem value="2">m@google.com</SelectItem>
-                        <SelectItem value="3">m@support.com</SelectItem>
+                        <SelectItem value="6">
+                          <div className="flex items-center gap-3">
+                            <FolderKanban size={15} /> Trabajo
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="7">
+                          <div className="flex items-center gap-3">
+                            <Handshake size={15} /> Freelance
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="5">
+                          <div className="flex items-center gap-3">
+                            <Sprout size={15} /> Inversiones
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="8">
+                          <div className="flex items-center gap-3">
+                            <Receipt size={15} /> Bonos
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="9">
+                          <div className="flex items-center gap-3">
+                            <Bird size={15} /> Otros
+                          </div>
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                     <FormDescription>

@@ -2,17 +2,36 @@ import ListCard from '@/app/dashboard/create/_create_components/ListCard'
 import AddIncomes from '@/app/dashboard/create/_create_components/AddIncome'
 import AddGastos from '@/app/dashboard/create/_create_components/AddGasto'
 
-import { getGastos } from '@/server/Gastos/getGastos'
-import { getIngresos } from '@/server/Ingresos/getIngresos'
+import { getGastos, getTotalGastos } from '@/server/Gastos/getGastos'
+import { getIngresos, getTotalIngresos } from '@/server/Ingresos/getIngresos'
+
+import { inter } from '@/lib/fonts'
 
 export default async function Create() {
     const ingresos = await getIngresos()
     const gastos = await getGastos()
 
+    const totalIngresos = await getTotalIngresos()
+    const totalGastos = await getTotalGastos()
+
+    const formatedTotalIngresos = new Intl.NumberFormat('es-ES', {
+        style: 'currency',
+        currency: 'CLP'
+    }).format(Number(totalIngresos))
+
+    const formatedTotalGastos = new Intl.NumberFormat('es-ES', {
+        style: 'currency',
+        currency: 'CLP'
+    }).format(Number(totalGastos))
+
     return (
         <div>
-            <header className='py-10'>
+            <header className='py-10 flex items-center justify-between'>
                 <h1 className='font-bold'>Proyecto de ahorro</h1>
+                <div className='flex gap-16'>
+                    <span className='text-white/70 flex items-center gap-3'>Ingresos totales: <strong className={`text-white ${inter.className}`}>{formatedTotalIngresos}</strong></span>
+                    <span className='text-white/70 flex items-center gap-3'>Gastos totales: <strong className={`text-white ${inter.className}`}>{formatedTotalGastos}</strong></span>
+                </div>
             </header>
             <section className='flex justify-between gap-14'>
                 <article className='w-full'>
@@ -29,7 +48,7 @@ export default async function Create() {
                                     name={ingreso.name}
                                     value={ingreso.value}
                                     comes_from={ingreso.comes_from}
-                                    icon={ingreso.icon}
+                                    icon={ingreso.category_id}
                                     isActive={ingreso.isactive}
                                     type='ingreso'
                                 />
@@ -52,7 +71,7 @@ export default async function Create() {
                                     name={gasto.name}
                                     value={gasto.value}
                                     comes_from={gasto.comes_from}
-                                    icon={gasto.icon}
+                                    icon={gasto.category_id}
                                     isActive={gasto.isactive}
                                     type='gasto'
                                 />

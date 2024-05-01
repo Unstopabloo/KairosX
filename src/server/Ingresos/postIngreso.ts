@@ -10,7 +10,7 @@ interface Ingreso {
   name: string;
   value: number;
   comes_from: string;
-  icon: string;
+  category_id: number;
   settled: Date;
   isActive: boolean;
   ending?: Date | undefined;
@@ -34,8 +34,8 @@ export async function postIngreso(values: Ingreso) {
     const settled = values.settled instanceof Date ? values.settled.toISOString() : values.settled;
     const ending = values.ending instanceof Date ? values.ending.toISOString() : values.ending;
 
-    await sql`INSERT INTO ingresos (name, value, comes_from, icon, user_id, settled, isActive, ending) 
-      VALUES (${values.name}, ${values.value}, ${values.comes_from}, ${values.icon}, ${user_id}, ${settled}, ${values.isActive}, ${ending})`;
+    await sql`INSERT INTO ingresos (name, value, comes_from, category_id, user_id, settled, isActive, ending) 
+      VALUES (${values.name}, ${values.value}, ${values.comes_from}, ${values.category_id}, ${user_id}, ${settled}, ${values.isActive}, ${ending})`;
 
     revalidateTag('ingresos')
   } catch (e) {

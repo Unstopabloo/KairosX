@@ -56,14 +56,14 @@ const config = {
             muted: colors.blue[950],
             subtle: colors.blue[800],
             DEFAULT: colors.blue[500],
-            emphasis: colors.blue[400],
+            emphasis: colors.blue[100],
             inverted: colors.blue[950],
           },
           background: {
             muted: '#131A2B',
             subtle: colors.gray[800],
             DEFAULT: colors.gray[900],
-            emphasis: colors.gray[300],
+            emphasis: colors.gray[200],
           },
           border: {
             DEFAULT: colors.gray[800],
