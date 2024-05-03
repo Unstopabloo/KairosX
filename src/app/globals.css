@@ -84,11 +84,11 @@
 
 ::-webkit-scrollbar-thumb {
   border-radius: 3px;
-  background-color: #0c7447;
+  background-color: #2c5c47;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #10c778;
+  background-color: #317151;
 }
 
 body {

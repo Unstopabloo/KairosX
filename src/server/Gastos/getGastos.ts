@@ -1,3 +1,5 @@
+"use server"
+
 import { sql } from "@vercel/postgres";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
@@ -23,7 +25,14 @@ export async function getGastos() {
             redirect("/")
         }
 
-        const { rows, rowCount } = await sql`SELECT * FROM gastos WHERE user_id = ${user_id}`;
+        const { rows, rowCount } = await sql`SELECT
+                                                gastos.name as name,
+                                                gastos.value as value,
+                                                categories.name as category
+                                            FROM gastos 
+                                            LEFT JOIN categories
+                                            ON category_id = categories.id
+                                            WHERE user_id = ${user_id}`;
 
         if (rowCount === 0) {
             return null
@@ -58,6 +67,38 @@ export async function getTotalGastos(): Promise<number | null> {
         const { rows } = await sql`SELECT SUM(value) FROM gastos WHERE user_id = ${user_id}`;
 
         return rows[0].sum
+    } catch (e) {
+        console.log(e);
+        return null;
+    }
+}
+
+export async function getGastosEscential() {
+    revalidateTag('gastos')
+
+    console.log('Gastos function called')
+
+    try {
+        const { getUser } = getKindeServerSession();
+
+        const user = await getUser();
+        if (!user) {
+            throw new Error('No hay usuario');
+        }
+
+        const user_id = await getUserId();
+
+        if (!user_id) {
+            redirect("/")
+        }
+
+        const { rows, rowCount } = await sql`SELECT name, value FROM gastos WHERE user_id = ${user_id}`;
+
+        if (rowCount === 0) {
+            return null
+        }
+
+        return rows
     } catch (e) {
         console.log(e);
         return null;

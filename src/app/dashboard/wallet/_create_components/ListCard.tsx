@@ -19,7 +19,7 @@ interface ListCardProps {
 export default async function ListCard({ id, name, value, comes_from, icon, isActive, type }: ListCardProps) {
 
   return (
-    <div className='relative flex justify-between items-center gap-2 bg-[#131313] p-3 border rounded-lg shadow-md max-w-[95%]'>
+    <div className='relative flex justify-between items-center gap-2 bg-gray-800 p-3 border border-gray-600 rounded-lg shadow-md max-w-[95%]'>
       {
         isActive && <Badge className="absolute -top-3 -right-5">Fijo</Badge>
       }

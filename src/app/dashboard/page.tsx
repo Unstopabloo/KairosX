@@ -1,7 +1,7 @@
 import DataCard from "@/components/DataCard";
 import TableList from "@/components/TableList";
 import ListItem from '@/components/ListItem';
-import Charts from "@/components/Charts.tsx/Charts";
+import Charts from "@/components/Charts/Charts";
 import { cookies } from "next/headers";
 
 import { getGastos } from "@/server/Gastos/getGastos";
@@ -70,6 +70,7 @@ export default async function Dashboard() {
                       text={ingreso.name}
                       incomeType={ingreso.isactive}
                       quantity={ingreso.value}
+                      icon={ingreso.category_id}
                     />
                   ))
                 }
@@ -82,6 +83,7 @@ export default async function Dashboard() {
                       text={gasto.name}
                       incomeType={gasto.isactive}
                       quantity={gasto.value}
+                      icon={gasto.category_id}
                     />
                   ))
                 }

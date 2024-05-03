@@ -19,7 +19,7 @@ export default async function DataCard({ type, amount }: DataCardProps) {
   }
 
   return (
-    <div className={`bg-[#151616] border-b-4 min-w-56 ${border} flex flex-col justify-start items-start gap-2 px-5 py-4 text-white font-semibold rounded-lg`}>
+    <div className={`bg-gray-800/80 border-b-4 min-w-56 ${border} flex flex-col justify-start items-start gap-2 px-5 py-4 text-white font-semibold rounded-lg`}>
       <header className="flex justify-between items-center w-full gap-10">
         <h3 className="text-white/80 text-sm">{type}</h3>
         <Link href="/">
