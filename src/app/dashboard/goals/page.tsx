@@ -2,17 +2,14 @@ import { getTotalGastos } from "@/server/Gastos/getGastos"
 import { getTotalIngresos } from "@/server/Ingresos/getIngresos"
 
 import { inter } from '@/lib/fonts'
-import { MoreVertical, Plus } from 'lucide-react'
-
-import { Progress } from "@/components/ui/progress"
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableRow
-} from "@/components/ui/table"
+import { Plus } from 'lucide-react'
 import { Button } from "@/components/ui/button"
+
+import BigGoal from "./_goals_components/BigGoal"
+import SmallGoal from "./_goals_components/SmallGoal"
+import AddBigGoal from "./_goals_components/AddBigGoal"
+import AddSmallGoal from "./_goals_components/AddSmallGoal"
+import { Suspense } from "react"
 
 export default async function Goals() {
 
@@ -67,57 +64,9 @@ export default async function Goals() {
           <header>
             <h2 className="font-bold">Metas principales</h2>
           </header>
-
-          <div className="flex flex-col gap-4">
-            <div className="flex justify-between text-primary">
-              <h3 className="font-semibold text-lg">Meta de ejemplo</h3>
-              <MoreVertical size={18} />
-            </div>
-            <Progress value={93} />
-            <Table>
-              <TableCaption>Datos de tu meta</TableCaption>
-              <TableBody>
-                <TableRow>
-                  <TableCell>Meta final</TableCell>
-                  <TableCell className="text-right">$250.00</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Cantidad actual</TableCell>
-                  <TableCell className="text-right">$250.00</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Cantidad restante</TableCell>
-                  <TableCell className="text-right">$250.00</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Ultima contribucion</TableCell>
-                  <TableCell className="text-right">$250.00</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Promedio de contribuciones</TableCell>
-                  <TableCell className="text-right">$250 / mo</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Comienzo</TableCell>
-                  <TableCell className="text-right">Mayo 2024</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Fecha de cumplimiento estimada</TableCell>
-                  <TableCell className="text-right">Enero 2025</TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-            <div className="flex justify-end">
-              <Button>Hacer un pago</Button>
-            </div>
-          </div>
-          <div className="h-[1px] w-full bg-gray-600 my-6"></div>
-
+          <BigGoal />
           <footer>
-            <Button className="w-full flex gap-4 bg-transparent text-primary hover:text-black border border-primary">
-              <span>Crear nueva meta principal</span>
-              <Plus size={18} />
-            </Button>
+            <AddBigGoal />
           </footer>
         </section>
 
@@ -126,40 +75,9 @@ export default async function Goals() {
             <h2 className="font-semibold text-sm">Metas secundarias</h2>
           </header>
 
-          <div className="flex flex-col gap-4">
-            <div className="flex justify-between text-primary">
-              <h3 className="text-sm">Meta de ejemplo</h3>
-              <MoreVertical size={14} />
-            </div>
-
-            <Progress value={33} />
-            <Table>
-              <TableBody>
-                <TableRow>
-                  <TableCell className="p-0">Meta final</TableCell>
-                  <TableCell className="py-1 text-right">$250.00</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="p-0">Cantidad actual</TableCell>
-                  <TableCell className="py-1 text-right">$250.00</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="p-0">Cantidad restante</TableCell>
-                  <TableCell className="py-1 text-right">$250.00</TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-
-            <div className="flex justify-end">
-              <Button variant="link" className="text-xs">Hacer un pago</Button>
-            </div>
-            <div className="h-[1px] w-full bg-gray-600 my-2"></div>
-          </div>
+          <SmallGoal />
           <footer>
-            <Button className="w-full flex gap-4 bg-transparent text-primary hover:text-black border border-primary">
-              <span>Crear nueva meta principal</span>
-              <Plus size={18} />
-            </Button>
+            <AddSmallGoal />
           </footer>
         </section>
       </div>

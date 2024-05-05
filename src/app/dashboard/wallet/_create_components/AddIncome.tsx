@@ -2,7 +2,7 @@
 
 import { postIngreso } from "@/server/Ingresos/postIngreso"
 
-import { use, useState } from "react"
+import { useState } from "react"
 import * as z from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -94,7 +94,15 @@ export default function AddIncomes() {
     console.log('submitting form')
     await postIngreso(values)
 
-    reset()
+    form.reset({
+      name: "",
+      value: 0,
+      comes_from: "",
+      category_id: 1,
+      isActive: isActive,
+      settled: new Date(),
+      ending: undefined,
+    })
     setIsOpen(false)
   }
 
@@ -267,7 +275,7 @@ export default function AddIncomes() {
                               selected={field.value}
                               onSelect={field.onChange}
                               disabled={(date) =>
-                                date > new Date() || date < new Date("1900-01-01")
+                                date < new Date() || date < new Date("1900-01-01")
                               }
                               initialFocus
                             />
