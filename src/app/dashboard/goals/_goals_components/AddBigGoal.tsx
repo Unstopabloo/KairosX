@@ -36,7 +36,7 @@ import { useState } from "react"
 import * as z from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { format, set } from "date-fns"
+import { format } from "date-fns"
 import { cn } from "@/lib/utils"
 
 const formSchema = z.object({
@@ -75,9 +75,6 @@ export default function AddBigGoal() {
   })
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log('submitting form')
-
-    // Do something with the form values
     postBigMeta(values)
 
     setIsOpen(false)
@@ -115,10 +112,10 @@ export default function AddBigGoal() {
                   <FormItem>
                     <FormLabel>Nombre</FormLabel>
                     <FormControl>
-                      <Input placeholder="Trabajo" {...field} />
+                      <Input placeholder="Auto" {...field} />
                     </FormControl>
                     <FormDescription className="text-xs">
-                      El nombre que tendrá este ingreso
+                      El nombre que tendrá esta meta principal.
                     </FormDescription>
                     <FormMessage />
                   </FormItem>

@@ -2,12 +2,13 @@ import { getTotalGastos } from "@/server/Gastos/getGastos"
 import { getTotalIngresos } from "@/server/Ingresos/getIngresos"
 
 import { inter } from '@/lib/fonts'
-import { Divide, Plus } from 'lucide-react'
+import { Plus } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 
 import BigGoal from "./_goals_components/BigGoal"
 import SmallGoal from "./_goals_components/SmallGoal"
 import AddBigGoal from "./_goals_components/AddBigGoal"
+import AddSmallGoal from "./_goals_components/AddSmallGoal"
 import { Suspense } from "react"
 
 export default async function Goals() {
@@ -76,10 +77,7 @@ export default async function Goals() {
 
           <SmallGoal />
           <footer>
-            <Button className="w-full flex gap-4 bg-transparent text-primary hover:text-black border border-primary">
-              <span>Crear nueva meta principal</span>
-              <Plus size={18} />
-            </Button>
+            <AddSmallGoal />
           </footer>
         </section>
       </div>

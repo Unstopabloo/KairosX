@@ -5,16 +5,25 @@ import {
   TableCell,
   TableRow
 } from "@/components/ui/table"
-import { Progress } from "@/components/ui/progress";
-import { MoreVertical } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { MoreVertical, Trash } from "lucide-react";
 
 import { getBigMetas } from "@/server/Metas/getMetas";
+import BigContribution from "./BigContribution";
+
+import { format } from "@formkit/tempo"
+import ProgressBar from "./ProgressBar";
+
+import { inter } from "@/lib/fonts"
+import DeleteGoal from "./DeleteGoal";
 
 export default async function BigGoal() {
   const metas = await getBigMetas();
-
-  console.log(metas)
 
   if (!metas) {
     return (
@@ -24,59 +33,92 @@ export default async function BigGoal() {
     )
   }
 
-  const progress = 33
-
   return (
     <>
       {
-        metas.map(meta => {
-          <div className="flex flex-col gap-4">
+        metas.map(meta => (
+          <div key={meta.id} className={`flex flex-col gap-4 ${meta.isdone && 'opacity-90'}`}>
             <div className="flex justify-between text-primary">
-              <h3 className="font-semibold text-lg">{meta.name}</h3>
-              <MoreVertical size={18} />
+              <h3 className={`font-semibold text-lg ${meta.isdone && 'line-through'}`}>{meta.name}</h3>
+              <DeleteGoal id={meta.id} />
             </div>
-            <Progress value={progress} />
+            <ProgressBar goal={meta.goal} actual={meta.actual_amount} isdone={meta.isdone} />
             <Table>
               <TableCaption>Datos de tu meta</TableCaption>
               <TableBody>
                 <TableRow>
                   <TableCell>Meta final</TableCell>
-                  <TableCell className="text-right">{meta.goal}</TableCell>
+                  <TableCell className={`text-right ${inter.className}`}>
+                    {
+                      new Intl.NumberFormat('es-ES', {
+                        style: 'currency',
+                        currency: 'CLP'
+                      }).format(Number(meta.goal))
+                    }
+                  </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell>Cantidad actual</TableCell>
-                  <TableCell className="text-right">{meta.actual_amount ? meta.actual_amount : 0}</TableCell>
+                  <TableCell className={`text-right ${inter.className}`}>
+                    {
+                      new Intl.NumberFormat('es-ES', {
+                        style: 'currency',
+                        currency: 'CLP'
+                      }).format(Number(meta.actual_amount))
+                    }
+                  </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell>Cantidad restante</TableCell>
-                  <TableCell className="text-right">{meta.left_amount ? meta.left_amount : 0}</TableCell>
+                  <TableCell className={`text-right ${inter.className}`}>
+                    {
+                      new Intl.NumberFormat('es-ES', {
+                        style: 'currency',
+                        currency: 'CLP'
+                      }).format(Number(meta.left_amount))
+                    }
+                  </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell>Ultima contribucion</TableCell>
-                  <TableCell className="text-right">{meta.last_contribution ? meta.last_contribution : 0}</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Promedio de contribuciones</TableCell>
-                  <TableCell className="text-right">
-                    {meta.contribution_balance ? meta.contribution_balance : 0} <span className="text-xs text-gray-400/90">/mo</span></TableCell>
+                  <TableCell className={`text-right ${inter.className}`}>
+                    {
+                      new Intl.NumberFormat('es-ES', {
+                        style: 'currency',
+                        currency: 'CLP'
+                      }).format(Number(meta.last_contribution))
+                    }
+                  </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell>Comienzo</TableCell>
-                  <TableCell className="text-right">{meta.start_at}</TableCell>
+                  <TableCell className="text-right">
+                    {format({
+                      date: meta.start_at,
+                      format: "long",
+                      locale: "es-CL"
+                    })}
+                  </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell>Fecha de cumplimiento estimada</TableCell>
-                  <TableCell className="text-right">{meta.ends_at}</TableCell>
+                  <TableCell className="text-right">
+                    {format({
+                      date: meta.ends_at,
+                      format: "long",
+                      locale: "es-CL"
+                    })}
+                  </TableCell>
                 </TableRow>
               </TableBody>
             </Table>
             <div className="flex justify-end">
-              <Button>Hacer un pago</Button>
+              <BigContribution isdone={meta.isdone} id={meta.id} />
             </div>
+            <div className="h-[1px] w-full bg-gray-600 my-6"></div>
           </div>
-        })
+        ))
       }
-      <div className="h-[1px] w-full bg-gray-600 my-6"></div>
     </>
   )
 }

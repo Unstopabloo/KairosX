@@ -44,9 +44,6 @@ export default async function ListCard({ id, name, value, comes_from, icon, isAc
         $ {value}
       </strong>
       <footer className='flex items-center gap-4 '>
-        <Button className='bg-[#0EA68B] hover:bg-[#0EA68B]/80 size-8' size="icon">
-          <Pen color='white' size={17} />
-        </Button>
         {
           type === 'ingreso' ? (<DeleteButton id={id} type="ingreso" />) : (<DeleteButton id={id} type="gasto" />)
         }
