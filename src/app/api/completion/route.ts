@@ -3,18 +3,23 @@
 import { streamText } from 'ai'
 import { createOpenAI } from '@ai-sdk/openai'
 
-const perplexity = createOpenAI({
-  apiKey: process.env.PERPLEXITY_API_KEY!,
-  baseURL: 'https://api.perplexity.ai'
-})
+// const perplexity = createOpenAI({
+//   apiKey: process.env.PERPLEXITY_API_KEY!,
+//   baseURL: 'https://api.perplexity.ai'
+// })
 
 export async function POST(req: Request) {
   console.log('POST /api/completion')
   // Extract the `prompt` from the body of the request
   const { prompt } = await req.json();
 
+  const openai = createOpenAI({
+    // custom settings, e.g.
+    apiKey: process.env.OPENAI_API_KEY,
+  });
+
   // Get a language model
-  const model = perplexity('llama-3-8b-instruct')
+  const model = openai('gpt-4o')
 
   // Call the language model with the prompt
   const result = await streamText({
@@ -27,7 +32,7 @@ export async function POST(req: Request) {
     maxTokens: 700,
     temperature: 0.65,
     topP: 1,
-    frequencyPenalty: 1,
+    frequencyPenalty: 1
   })
 
   // Respond with a streaming response

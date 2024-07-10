@@ -41,7 +41,7 @@ export default function Advise({ ingresos, gastos }: AdviseProps) {
         <H2Card text="Consejo de Kairos" />
         <form onSubmit={handleSubmitWithDelay}>
           <Button
-            className={disabled === true ? '' : 'cursor-not-allowed opacity-50'}
+            className={`text-black ${disabled === true ? '' : 'cursor-not-allowed opacity-50'}`}
             disabled={!disabled}
             size="sm"
             type="submit"
